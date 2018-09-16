@@ -1,0 +1,26 @@
+.select-form {
+    display: flex;
+    flex-direction: column;
+    select {
+        width: 100%;
+        margin: 20px auto;
+    }
+    input {
+        width: 200px;
+        margin: 0 auto;
+    }
+    
+}
+
+@media (max-width: 768px) {
+   .select-form {
+       margin: 50px 20px;
+       select {
+           margin-bottom: 60px;
+       }
+       input {
+           margin-bottom: 30px; 
+       }
+       
+   }
+}

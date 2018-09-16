@@ -1,0 +1,52 @@
+.header {
+    &__title {
+        font-size: 2rem;
+        text-align: center;
+    }
+    &__search {
+        position: absolute;
+        left: 88%;
+        top: 5%;
+    }
+    &__user {
+        position: absolute;
+        left: 90%;
+        top: 5%;
+    }
+}
+
+
+.nav {
+    height: 50px;
+    &__ul{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%; 
+      margin: 0;
+      padding: 0;
+      > li {
+          margin: 5px 30px;
+          list-style: none;
+          > a {
+              text-decoration: none;
+              color: black;
+          }
+      }
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        &__search {
+            position: absolute;
+            left: 85%;
+            top: 5%;
+        }
+        &__user {
+            position: absolute;
+            left: 90%;
+            top: 5%;
+        }
+    }
+}

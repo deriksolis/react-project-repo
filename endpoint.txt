@@ -1,0 +1,36 @@
+http://www.dreamcation.com/home
+- will take you home
+
+http://www.dreamcation.com/destination
+- will take you to the destination page
+
+http://www.dreamcation.com/contact
+- will take you to the contact page
+
+http://www.dreamcation.com/destination/mountains
+- will take you to the products page, showing only mountains
+
+http://www.dreamcation.com/destination/lakes
+- will take you to the products page, showing only lakes
+
+http://www.dreamcation.com/destination/beaches
+- will take you to the products page, showing only beaches
+
+http://www.dreamcation.com/users
+- will take you to the products page, showing a list of the users
+
+http://www.dreamcation.com/users/1
+- will take you to the products page, showing only the first users info
+
+http://www.dreamcation.com/users/1/username
+- will take you to the products page, showing only the first users username
+
+http://www.dreamcation.com/users/1/account number
+- will take you to the products page, showing only the first users account number
+
+http://www.dreamcation.com/add/user
+- will take you to the products page, adds a user
+
+http://www.dreamcation.com/delete/user/1
+- will take you to the products page, deletes user 1
+

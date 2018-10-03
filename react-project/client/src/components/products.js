@@ -3,7 +3,7 @@ import Card from './card';
 
 
 const Products = (props) => {
-  
+  console.log(props.products)
     return (
       <div className="container"> 
         <form className="select-form">
@@ -36,7 +36,7 @@ const Products = (props) => {
           <input type="submit" value="submit" onClick={props.handleSubmit}/>
         </form>
         <div className="card-container">
-        {props.finishedArr.map( realArray => {
+        {props.products.map( realArray => {
             return <Card 
               key = {realArray.name}
               name = {realArray.name} 

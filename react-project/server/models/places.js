@@ -3,7 +3,6 @@ let mongoose = require('mongoose');
 let places = mongoose.model('rnProject', {
     productId: {
         type: Number,
-        required: true,
         trim: true
     },
     name: {
@@ -35,12 +34,7 @@ let places = mongoose.model('rnProject', {
         type: String,
         required: true,
         trim: true
-    },
-    none: {
-        type: String,
-        required: true,
-        trim: true
-    },
+    }
 });
 
 module.exports= {places}

@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -5,17 +6,22 @@ let {ObjectID} = require('mongodb');
 
 let {mongoose} = require('./db/mongoose');
 let {places} = require('./models/places');
+let {contacts} = require('./models/contacts');
+
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
 
 // post destinations
 
 app.post('/destinations', (req, res) => {
     const {productId, name, description, price,
-        landscapeType, url, days, none} = req.body;
+        landscapeType, url, days} = req.body;
     let place = new places({
         productId, 
         name,
@@ -23,16 +29,36 @@ app.post('/destinations', (req, res) => {
         price,
         landscapeType, 
         url,
-        days, 
-        none 
+        days
         })
  
     place.save().then(doc => {
-        res.send(doc)
+        res.redirect('http://localhost:3000/admin');
+        console.log(doc);
     }, e => {
         res.status(400).send(e);
     })
  })
+
+ app.post('/contacts', (req, res) => {
+    const {firstName, lastName, email, work,
+        description} = req.body;
+    let newContact = new contacts({
+        firstName, 
+        lastName,
+        email,
+        work,
+        description
+        })
+ 
+    newContact.save().then(doc => {
+        res.redirect('http://localhost:3000/');
+        console.log(doc);
+    }, e => {
+        res.status(400).send(e);
+    })
+ })
+
 
 
 // // get all destinations
@@ -40,6 +66,16 @@ app.post('/destinations', (req, res) => {
 app.get('/destinations', (req, res) => {
     places.find().then((place) => {
         res.send(place)
+    }, (e) => {
+        res.status(400).send(e);
+    })
+})
+
+// get all contacts 
+
+app.get('/contacts', (req, res) => {
+    contacts.find().then((contact) => {
+        res.send(contact)
     }, (e) => {
         res.status(400).send(e);
     })
@@ -69,7 +105,7 @@ app.get('/destinations/:id', (req, res) => {
 
 app.delete('/destinations/:id', (req, res) => {
     const id = req.params.id;
-    places.findByIdAndRemove(id)
+    places.findByIdAndDelete(id)
     .then(place => {
         if(!place) {
             return res.status(404).send("Product not found")
@@ -81,28 +117,31 @@ app.delete('/destinations/:id', (req, res) => {
 
 // // put 
 
-// app.put('/people/:id', (req, res) => {
-//     const id = parseInt(req.params.id);
-//     // const {ids, name, salary, department} = req.body;
-    
-//     for(let i = 0; i < persons.length; i++) {
-//         if ( id === persons[i].id ) {
-//             persons[i] = req.body;   
-//             res.send(persons[i]);
-//             fs.writeFileSync('../client/public/products.json', JSON.stringify(persons));     
-//         } 
-//     }
-//     // else {
-//     //     const newPerson = {
-//     //         id,
-//     //         name, 
-//     //         salary,
-//     //         department
-//     //     }
-//     //     persons.push(newPerson);
-//     //     fs.writeFileSync('./hard.json', JSON.stringify(persons));
-//     //     res.send(newPerson);
-//     // }
-// })
+app.put("/destinations/:id", (req, res) => {
+    const id = req.params.id;
+    const body = _.pick(req.body, [
+        "productId", 
+        "name",
+        "description",
+        "price",
+        "landscapeType", 
+        "url",
+        "days", 
+        "none"
+    ]);
+
+    places.findByIdAndUpdate(id, { $set: body }, { new: true })
+      .then(data => {
+        if (!data) {
+          return res.send("Product not found");
+        }
+        data.save()
+        .then(updatedData => res.send(updatedData))
+      })
+      .catch(e => {
+        res.status(400).send(e.message);
+      });
+   });
+
 
 app.listen(3005);

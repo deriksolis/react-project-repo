@@ -1,51 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Carousel from './carousel';
 
+const Home = () => {
 
-// let i = 0;
-// let images = [];
-
-// images[0]= "url('../../static/img/beach.jpg')";
-// images[1]= "url('../../static/img/mountains.jpg')";
-// images[2]= "url('../../static/img/lake.jpg')";
-
-
-class Home extends Component {
-  // constructor(props){
-  //   super(props);
-  // }
-
-  // changeImg = () => {
-  
-  //   let hero = document.querySelector(".hero");
-  //   if (hero) {
-  //     hero.style.backgroundImage = images[i];
-  //     if(i < images.length - 1) {
-  //       i++;
-  //     } else {
-  //       i = 0;
-  //     }
-  
-  //     setTimeout(this.changeImg, 3000);
-  //   } 
-  // };
-  
-  // componentDidMount(){
-  //   this.changeImg();
-  // }
-
-  render(){
     return (
       <div className="container">
-        {/* <div className="hero">
-          <div className="hero__innerbox">
-            <h1>Location: Paradise</h1>
-            <p>You define what paradise is to you. We just give you a few options. Click below to find out more!</p>
-            <div className="button-container">
-              <button>See more!</button>
-            </div>
-          </div>
-        </div>  */}
         <Carousel />
         <div className="home-top">
           <h2>Quit dreaming, start living the dream</h2>
@@ -72,7 +31,6 @@ class Home extends Component {
         </div>
       </div>
     );
-  }
 }
 
 export default Home;

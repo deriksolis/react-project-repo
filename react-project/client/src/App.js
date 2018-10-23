@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './index';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
-import Header from './header';
+import Header from './components/header';
 import Home from './components/Home';
 import Contact from './components/contact';
 import Products from './components/products';
-import Footer from './footer';
+import Footer from './components/footer';
 import './assets/css/input.css';
 import Callback from './Auth/Callback';
 import Admin from './Auth/Admin';

@@ -10,7 +10,7 @@ const Products = (props) => {
           <div>
             <label>Choose an landscape type:
               <select id="l" >
-                <option className="select-form--dim" value="null">Select an option:</option>
+                <option value="null">Select an option:</option>
                 <option value="beach">Beach</option>
                 <option value="mountain">Mountains</option>
                 <option value="lake">Lake</option>
@@ -18,7 +18,7 @@ const Products = (props) => {
             </label>
             <label>Choose length of your trip:
               <select id="d">
-                <option className="select-form--dim" value="null">Select an option:</option>
+                <option value="null">Select an option:</option>
                 <option value="2day">2 Day</option>
                 <option value="3day">3 Day</option>
                 <option value="week">Week</option>
@@ -26,7 +26,7 @@ const Products = (props) => {
             </label>
             <label>Choose your price range:
               <select id="p">
-                <option className="select-form--dim" value="null">Select an option:</option>
+                <option value="null">Select an option:</option>
                 <option value="200">Below $200</option>
                 <option value="500">Below $500</option>
                 <option value="1000">Below $1000</option>
@@ -39,7 +39,7 @@ const Products = (props) => {
         {props.products.map( realArray => {
             return <Card 
               key = {realArray.name}
-              name = {realArray.name} 
+              name = {realArray.title} 
               description = {realArray.description} 
               img = {realArray.url}
               price = {realArray.price} />

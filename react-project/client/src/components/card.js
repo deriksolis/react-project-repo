@@ -9,6 +9,7 @@ const Card = (props) => {
             <figcaption>{props.description}</figcaption>
         </figure>
         <p>${props.price}</p>
+        <button>Visit Now</button>
       </div>
     );
   }

@@ -416,8 +416,8 @@ template {
 
 .form input[type=text], .form input[type=email], .form textarea {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 10px 20px;
+  margin: 4px 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -427,7 +427,7 @@ template {
   width: 100%;
   background-color: #c8f7ff;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin: 4px 0;
   border: none;
   border-radius: 4px;
   cursor: pointer; }
@@ -511,6 +511,13 @@ template {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 10px; }
 
+@media (max-width: 768px) {
+  .card-container {
+    display: block; }
+    .card-container .cards {
+      width: 90%;
+      margin: 0 auto; } }
+
 .auth-cards {
   display: flex;
   width: 100%;
@@ -566,7 +573,7 @@ template {
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 50px;
+  padding-top: 20px;
   left: 0;
   top: 0;
   width: 100%;
@@ -577,7 +584,7 @@ template {
   background-color: white;
   margin: auto;
   padding: 20px;
-  width: 50%; }
+  max-width: 1200px; }
 
 .close {
   color: black;
@@ -597,19 +604,17 @@ template {
   .contactcard-container__contactcard {
     width: 45%;
     margin: 10px auto;
-    text-align: center;
     background-color: #f2f2f2;
-    padding: 10px 0;
-    border-radius: 5px;
-    font-size: 7rem; }
+    padding: 30px;
+    border-radius: 5px; }
     .contactcard-container__contactcard__name {
-      font-size: 1.5rem; }
+      font-size: 1.8rem;
+      font-weight: 700; }
     .contactcard-container__contactcard__work {
       font-size: 1.2rem; }
     .contactcard-container__contactcard__description {
       font-size: 1rem;
-      width: 70%;
-      margin: 0 auto 20px; }
+      width: 70%; }
     .contactcard-container__contactcard__email {
       font-size: .6rem; }
 
@@ -624,10 +629,10 @@ template {
   flex-direction: column; }
   .select-form select {
     width: 100%;
-    margin: 20px auto; }
+    margin: 10px auto; }
   .select-form input {
     width: 200px;
-    margin: 0 auto; }
+    margin: auto; }
 
 @media (max-width: 768px) {
   .select-form {

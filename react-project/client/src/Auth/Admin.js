@@ -8,12 +8,12 @@ class Admin extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // name: this.name,
-            // description: this.description,
-            // price: this.props.price,
-            // landscapeType: this.props.landscapeType,
-            // url: this.props.url,
-            // days: this.props.url
+            title: null,
+            description: null,
+            url: null,
+            days: null,
+            price: null,
+            landscapeType: null
         }
     }
 
@@ -45,10 +45,10 @@ class Admin extends Component {
     } 
 
     editItem = (item) => {
-        const {name, description, url,
+        const {title, description, url,
             price, landscapeType, days} = this.state;
         
-        let sentBody = {name, description, url,
+        let sentBody = {title, description, url,
             price, landscapeType, days};
 
         console.log(JSON.stringify(sentBody));
@@ -61,16 +61,23 @@ class Admin extends Component {
         })
         .then(response =>  console.log('response-', response))
         .catch(e => console.log(e));
+        console.log('yerrr', item);
+        console.log('hello', title);
     }
 
-    updateChange = (e) => {
+    updateChange = (id) => {
         this.setState({
-            [e.target.name]: e.target.value
-        })
+            title: document.getElementById(`edit-title${id}`).value,
+            description: document.getElementById(`edit-url${id}`).value,
+            url: document.getElementById(`edit-description${id}`).value,
+            days: document.getElementById(`edit-days${id}`).value,
+            price: document.getElementById(`edit-price${id}`).value,
+            landscapeType: document.getElementById(`edit-landscapeType${id}`).value
+        }, () => console.log(this.state))
     }
 
     editModal = (id) => {
-        const modal = document.getElementById(id + 1);
+        const modal = document.getElementById(id + 100);
         if (modal.style.display === 'block') {
             modal.style.display = "none";
         } else {
@@ -85,28 +92,29 @@ class Admin extends Component {
             return (
             <div>
             <AuthCard 
-            name = {realArray.name} 
+            name = {realArray.title} 
             description = {realArray.description} 
             img = {realArray.url}
             price = {realArray.price}
             area = {realArray.landscapeType}
-            id = {realArray._id} 
+            id = {realArray.id} 
             editModal = {this.editModal}
             deleteModal = {this.deleteModal} />
             <Delete 
-            id = {realArray._id} 
+            id = {realArray.id} 
             deleteModal = {this.deleteModal}
             deleteItem = {this.deleteItem} />
             <Edit 
             editItem = {this.editItem}
-            id = {realArray._id} 
+            id = {realArray.id} 
             editModal = {this.editModal}
             updateChange = {this.updateChange}
-            name = {realArray.name}
+            name = {realArray.title}
             description = {realArray.description}
             url = {realArray.url}
             price = {realArray.price}
             days = {realArray.days}
+            area = {realArray.landscapeType}
             />
             </div>
         )})
@@ -138,7 +146,7 @@ class Admin extends Component {
                             <div className="form__left">
                                 <div>
                                     <label htmlFor="name">Title</label>
-                                    <input type="text" name="name" id="name" />
+                                    <input type="text" name="title" id="name" />
                                 </div>
                                 <div>
                                     <label htmlFor="l-name">Image Url</label>

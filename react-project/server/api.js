@@ -87,8 +87,7 @@ app.post('/destinations', (req, res) => {
          landscapeType, 
          url, 
          days} = req.body;
-    let sql = `INSERT INTO products (title, description, price, landscapeType, url, days) VALUES ("${title}", "${description}", "${price}", "${landscapeType}", "${url}", "${days}")`;
-    connection.query( sql , (err, result, fields) => {
+    connection.query( `INSERT INTO products (title, description, price, landscapeType, url, days) VALUES ("?", "?", "?", "?", "?", "?")` , [title, description, price, landscapeType, url, days] ,(err, result, fields) => {
         if(err) throw err;
         res.redirect('http://localhost:3000/admin');
     })
@@ -102,8 +101,7 @@ app.post('/contacts', (req, res) => {
          email, 
          work, 
          description} = req.body;
-    let sql = `INSERT INTO contacts (firstName, lastName, email, work, description) VALUES ("${firstName}", "${lastName}", "${email}", "${work}", "${description}")`;
-    connection.query( sql , (err, result, fields) => {
+    connection.query( `INSERT INTO contacts (firstName, lastName, email, work, description) VALUES ("?", "?", "?", "?", "?")`, [firstName, lastName, email, work], (err, result, fields, description) => {
         if(err) throw err;
         res.redirect('http://localhost:3000/contact');
     })
@@ -118,8 +116,7 @@ app.put('/destinations/:id', (req, res) => {
          landscapeType, 
          url, 
          days} = req.body;
-    let sql = `UPDATE products SET title="${title}", description="${description}", price="${price}", landscapeType="${landscapeType}", url="${url}", days="${days}" WHERE id=${req.params.id}`;
-    connection.query( sql , (err, result, fields) => {
+    connection.query( `UPDATE products SET title="?", description="?", price="?", landscapeType="?", url="?", days="?" WHERE id=?` , [title, description, price, landscapeType, url, days, req.params.id], (err, result, fields) => {
         if(err) throw err;
         res.redirect('http://localhost:3000/admin');
     })
